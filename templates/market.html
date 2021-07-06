@@ -44,15 +44,24 @@
                 <th scope="col">Name</th>
                 <th scope="col">Barcode</th>
                 <th scope="col">Price</th>
+                <th scope="col">Options</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Value for ID</td>
-                <td>Value for Name</td>
-                <td>Value for Barcode</td>
-                <td>Value for Price</td>
-            </tr>
+
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.barcode }}</td>
+                    <td>{{ item.price }}€</td>
+                    <td>
+                        <button class="btn btn-outline btn-info">More Info</button>
+                        <button class="btn btn-outline btn-success">Purchase</button>
+                    </td>
+                </tr>
+            {% endfor %}
+
         </tbody>
     </table>
     <!-- Optional JavaScript; choose one of the two! -->
