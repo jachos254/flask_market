@@ -1,5 +1,5 @@
 from market import app
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash, get_flashed_messages
 from market.models import Item, User
 from market.forms import RegisterForm
 from market import db
@@ -25,6 +25,6 @@ def register_page():
         db.session.commit()
         return redirect(url_for('market_page'))
     if form.errors != {}:
-        for err_msg in form.error.values():
-            print(f'There was en error with creating user: {err_msg}')
+        for err_msg in form.errors.values():
+            flash(f'There was en error with creating user: {err_msg}', category='danger')
     return render_template('register.html', form=form)
